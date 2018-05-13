@@ -53,11 +53,11 @@ public class Time {
     }
 
     public void setTotalJogos(int totalJogos) {
-        this.totalJogos = totalJogos;
+        this.totalJogos += totalJogos;
     }
 
     public void setVitoria(int vitoria) {
-        this.vitoria = vitoria;
+        this.vitoria += vitoria;
     }
 
     public void setEmpate(int empate) {
@@ -65,23 +65,23 @@ public class Time {
     }
 
     public void setDerrota(int derrota) {
-        this.derrota = derrota;
+        this.derrota += derrota;
     }
 
     public void setTotalPontos(int totalPontos) {
-        this.totalPontos = totalPontos;
+        this.totalPontos += totalPontos;
     }
 
     public void setGolsMarcados(int golsMarcados) {
-        this.golsMarcados = golsMarcados;
+        this.golsMarcados += golsMarcados;
     }
 
     public void setGolsSofridos(int golsSofridos) {
-        this.golsSofridos = golsSofridos;
+        this.golsSofridos += golsSofridos;
     }
 
     public void setSaldoGols(int SaldoGols) {
-        this.SaldoGols = SaldoGols;
+        this.SaldoGols += SaldoGols;
     }
 
     ////=============================== GET ================================

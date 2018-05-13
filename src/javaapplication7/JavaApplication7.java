@@ -47,9 +47,7 @@ public class JavaApplication7 {
                     else{
                         Tela.ExibirMessagem("TOTAL DE TIMES IGUAL A 10!!!");
                     }
-                    
-                    
-                    
+                       
                     break;
                 
                 case "Simular":
@@ -58,7 +56,9 @@ public class JavaApplication7 {
                     
                     
                 case "Ver Tabela":
-                    objetoController.VerTabela();
+                    //objetoController.VerTabela();
+                    objetoController.TabelaConsole();
+                    break;
                     
                 case "Sair":
                     aux = false;

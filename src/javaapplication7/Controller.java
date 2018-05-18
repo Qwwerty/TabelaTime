@@ -49,6 +49,7 @@ public class Controller extends javax.swing.JPanel{
         
         for(int i = 0; i < 2; i++){
             String x = (String) JOptionPane.showInputDialog(null, "ESCOLHA " + (i+1), "Times", JOptionPane.WARNING_MESSAGE, null, aux, null);
+            
            
             for (int J = 0; J < timeController.size(); J++) {
                 if(x.equals( timeController.get(J).getNameTeam())){
@@ -56,20 +57,31 @@ public class Controller extends javax.swing.JPanel{
                 }
             }
            
-        }
-        
-        
-        
+        }       
     }
     
-    public void simularJogo(){
-                
+    public boolean simularJogo(){
+   
         mostrarTimes();
         
         int a = gerador.nextInt(3);
         int b = gerador.nextInt(3);
         
         Tela.ExibirMessagem("Resultado: " + timeEscolhido.get(0).getNameTeam() + " " + a + " x " + b + " " + timeEscolhido.get(1).getNameTeam());
+        
+        //Teste time 1
+        for (int i = 0; i <  timeEscolhido.get(0).timeJogados.size(); i++) {
+             if(timeEscolhido.get(0).getNameTeam().equals( timeEscolhido.get(1).timeJogados.get(i)));
+                Tela.ExibirMessagem("ESSE TIME JÁ JOGOU COM ESTE MESMO TIME");
+                return false;
+        }
+        
+        //Teste time 2
+         for (int i = 0; i <  timeEscolhido.get(1).timeJogados.size(); i++) {
+             if(timeEscolhido.get(1).getNameTeam().equals(timeEscolhido.get(0).timeJogados.get(i)));
+                Tela.ExibirMessagem("ESSE TIME JÁ JOGOU COM ESTE MESMO TIME");
+                return false;
+        }
         
         if(a == b){
             Tela.ExibirMessagem("Impate");
@@ -80,6 +92,7 @@ public class Controller extends javax.swing.JPanel{
             timeEscolhido.get(0).setGolsMarcados(a);
             timeEscolhido.get(0).setGolsSofridos(b);
             timeEscolhido.get(0).setTotalJogos(1);
+            timeEscolhido.get(0).timeJogados.add(timeEscolhido.get(1).getNameTeam());
             
             ///====================================================================
            ///PONTUAÇÃO.... TIME 2
@@ -88,6 +101,7 @@ public class Controller extends javax.swing.JPanel{
             timeEscolhido.get(1).setGolsMarcados(b);
             timeEscolhido.get(1).setGolsSofridos(a);
             timeEscolhido.get(1).setTotalJogos(1);
+            timeEscolhido.get(1).timeJogados.add(timeEscolhido.get(0).getNameTeam());
             
             
             
@@ -100,6 +114,7 @@ public class Controller extends javax.swing.JPanel{
             timeEscolhido.get(0).setGolsMarcados(a);
             timeEscolhido.get(0).setGolsSofridos(b);
             timeEscolhido.get(0).setTotalJogos(1);
+            timeEscolhido.get(0).timeJogados.add(timeEscolhido.get(1).getNameTeam());
             
             ///====================================================================
            ///PONTUAÇÃO.... TIME 2
@@ -107,6 +122,7 @@ public class Controller extends javax.swing.JPanel{
             timeEscolhido.get(1).setGolsSofridos(a);
             timeEscolhido.get(1).setTotalJogos(1);
             timeEscolhido.get(1).setDerrota(1);
+            timeEscolhido.get(1).timeJogados.add(timeEscolhido.get(0).getNameTeam());
             
             Tela.ExibirMessagem("O TIME " + timeEscolhido.get(0).getNameTeam() + " Ganhou" );
             
@@ -119,6 +135,7 @@ public class Controller extends javax.swing.JPanel{
             timeEscolhido.get(1).setGolsMarcados(b);
             timeEscolhido.get(1).setGolsSofridos(a);
             timeEscolhido.get(1).setTotalJogos(1);
+            timeEscolhido.get(1).timeJogados.add(timeEscolhido.get(0).getNameTeam());
             
             ///====================================================================
            ///PONTUAÇÃO.... TIME 2
@@ -126,16 +143,14 @@ public class Controller extends javax.swing.JPanel{
             timeEscolhido.get(0).setGolsSofridos(b);
             timeEscolhido.get(0).setTotalJogos(1);
             timeEscolhido.get(0).setDerrota(1);
+            timeEscolhido.get(0).timeJogados.add(timeEscolhido.get(1).getNameTeam());
             
             
             
             Tela.ExibirMessagem("O TIME " + timeEscolhido.get(1).getNameTeam() + " Ganhou" );
         }
-        
-        ///LIMPAR O ARRAY DE TIMES ESCOLHIDOS...
-       
-        
-    }
+        return true;
+}
     
     public int getTotalTimes(){
         return timeController.size();

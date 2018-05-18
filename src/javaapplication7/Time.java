@@ -1,9 +1,12 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package javaapplication7;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -20,9 +23,10 @@ public class Time {
         golsMarcados = 0;
         golsSofridos = 0;
         SaldoGols = 0;
+        timeJogados = new ArrayList<String>();
         
     }
-       
+    public  ArrayList<String> timeJogados;
     private String nameTeam;
     private  int totalJogos;
     private  int vitoria;
